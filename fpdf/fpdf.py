@@ -536,7 +536,7 @@ class FPDF(object):
         self.font_family=family
         self.font_style=style
         self.font_size_pt=size
-        self.font_size=size/self.k
+        self.font_size=float(size)/float(self.k)
         self.current_font=self.fonts[fontkey]
         self.unifontsubset = (self.fonts[fontkey]['type'] == 'TTF')
         if(self.page>0):
@@ -651,7 +651,7 @@ class FPDF(object):
             if(align=='R'):
                 dx=w-self.c_margin-self.get_string_width(txt)
             elif(align=='C'):
-                dx=(w-self.get_string_width(txt))/2.0
+                dx = (w/2.0) - (self.get_string_width(txt)/2)
             else:
                 dx=self.c_margin
             if(self.color_flag):
